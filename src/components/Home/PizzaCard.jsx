@@ -1,7 +1,7 @@
 import { useDispatch } from 'react-redux';
 import { useState } from 'react';
 
-const PizzaCard = ({pizza}) => {
+const PizzaCard = ({ pizza }) => {
 
     const [toggled, setToggled] = useState(true);
 
@@ -13,10 +13,10 @@ const PizzaCard = ({pizza}) => {
         setToggled(!toggled);
         console.log('clicked toggle button!');
 
-        if(toggled) {
+        if (toggled) {
             addPizza();
-        } 
-        if(!toggled) {
+        }
+        if (!toggled) {
             removePizza();
         }
     }
@@ -33,18 +33,17 @@ const PizzaCard = ({pizza}) => {
         dispatch({ type: 'REMOVE_PIZZA', payload: pizza })
     }
 
-    return (  
+    return (
         <>
-        <div className="cardContent">
-            <img src={pizza.path} alt={pizza.name}/>
-            <h3>{pizza.name}</h3>
-            <p>{pizza.description} {pizza.price}</p>
-            {toggled && <button onClick={toggleRemoveButton}>ADD</button>}
-            {!toggled && <button onClick={toggleRemoveButton}>REMOVE</button>}
-        </div>
-
+            <div className="cardContent">
+                <img src={pizza.path} alt={pizza.name} />
+                <h3>{pizza.name}</h3>
+                <p>{pizza.description} {pizza.price}</p>
+                {toggled && <button onClick={toggleRemoveButton}>ADD</button>}
+                {!toggled && <button onClick={toggleRemoveButton}>REMOVE</button>}
+            </div>
         </>
     );
 }
- 
+
 export default PizzaCard;
