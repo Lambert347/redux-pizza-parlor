@@ -14,7 +14,12 @@ const pizzaList = (state=[], action) => {
 }
 
 const customerInfo = (state={}, action) => {    
-    return state
+    if (action.type === 'ADD_NEW_ORDER') {
+        return {
+            [action.payload.property]: action.payload.value
+        }
+    }
+    return state;
 }
 
 const pizzaOrder = (state=[], action) => {
