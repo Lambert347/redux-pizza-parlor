@@ -23,14 +23,11 @@ const PizzaCard = ({pizza}) => {
         console.log('clicked addPizza!');
         // !!! TO-DO  !!
         // dispatch pizza to the store, hold pizzas added in an array.
+        dispatch({ type: 'ADD_PIZZA', payload: pizza })
     }
 
     const removePizza = () => {
         console.log('clicked removePizza!');
-    }
-
-    const next = () => {
-        console.log('clicked next');
     }
 
     return (  
@@ -42,9 +39,7 @@ const PizzaCard = ({pizza}) => {
             {toggled && <button onClick={toggleRemoveButton}>ADD</button>}
             {!toggled && <button onClick={toggleRemoveButton}>REMOVE</button>}
         </div>
-        <div>
-            <button onClick={next}>Next</button>
-        </div>
+
         </>
     );
 }
