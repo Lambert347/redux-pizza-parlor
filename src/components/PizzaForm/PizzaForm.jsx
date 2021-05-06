@@ -1,5 +1,6 @@
 import {useState} from 'react';
 import {useDispatch} from 'react-redux';
+import { useHistory } from 'react-router-dom';
 
 function PizzaForm(){
     const [customer_name, setCustomerName] = useState('');
@@ -12,6 +13,8 @@ function PizzaForm(){
 
     let [orderToAdd, setOrderToAdd] = useState({customer_name: '', street_address: '', city: '', zip: '', type: '',})
 
+    const history = useHistory();
+
     const addOrder = (event) => {
         event.preventDefault();
         setOrderToAdd({
@@ -22,7 +25,8 @@ function PizzaForm(){
             zip: zip,
             type: type,
         })
-        dispatchEvent({type: 'ADD_NEW_ORDER', payload: orderToAdd})    
+        dispatchEvent({type: 'ADD_NEW_ORDER', payload: orderToAdd})
+        history.push('/checkout');    
     }
 
     return (
@@ -34,7 +38,7 @@ function PizzaForm(){
                 <input placeholder="City" value={city} onChange={(event) => setCity(event.target.value)} />
                 <input placeholder="Zip Code" value={zip} onChange={(event) => setZip(event.target.value)} />
                 <input placeholder="Order Type (Delivery or Pickup)" value={type} onChange={(event) => setType(event.target.value)} />
-                <button onClick={}>Submit Info</button>
+                <button>Submit Info</button>
             </form>
         </section>
     )
