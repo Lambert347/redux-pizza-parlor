@@ -1,9 +1,13 @@
 import React, { useEffect } from 'react';
 import axios from 'axios';
 import './App.css';
+
 import { HashRouter as Router, Route} from 'react-router-dom';
 import Home from '../Home/Home';
 import {useDispatch} from 'react-redux';
+
+import Header from '../Header/Header';
+
 
 function App() {
 
@@ -26,9 +30,7 @@ function App() {
 
   return (
     <div className='App'>
-      <header className='App-header'>
-        <h1 className='App-title'>Prime Pizza</h1>
-      </header>
+    <Header />
     <Router>
       <Route exact path="/" component={Home} />
     </Router>
