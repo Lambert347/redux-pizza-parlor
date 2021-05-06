@@ -11,7 +11,7 @@ const Home = () => {
     const history = useHistory();
 
     const next = () => {
-        console.log('clicked next');
+        console.log('clicked next pizza order is:', pizzaOrder);
         history.push('/customer');
     }
 
