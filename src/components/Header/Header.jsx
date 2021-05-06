@@ -7,7 +7,8 @@ function Header(){
     return(
         <header className='App-header'>
             <h1 className='App-title'>Prime Pizza</h1>
-            <h3>Total: {total.total}</h3>
+            {/* Add logic to conditionall display total price */}
+            {/* <h3>Total: {total.total}</h3> */}
         </header>
     )
 }
