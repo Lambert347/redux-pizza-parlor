@@ -21,7 +21,7 @@ function Checkout(){
                     zip: customerInfo.zip,
                     type: customerInfo.type,
                     total: customerInfo.total,
-                    pizzas: pizzaOrder.pizzas
+                    pizzas: pizzaOrder
                 }
             }).then( response => {
                 console.log(response);    
@@ -54,10 +54,10 @@ function Checkout(){
                     {pizzaOrder.map((pizza, i) => {
                     <>
                     <tr key={i}>
-                        <td>{pizza.pizza}</td>
+                        <td>{pizza.name}</td>
                     </tr>
                     <tr key={i}>
-                        <td>{pizza.cost}</td>
+                        <td>{pizza.price}</td>
                     </tr>
                     </>
                     })}
