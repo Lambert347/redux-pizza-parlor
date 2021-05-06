@@ -7,6 +7,8 @@ const PizzaCard = ({pizza}) => {
 
     const dispatch = useDispatch();
 
+    const [pizzaState, setPizzaState] = useState([]);
+
     const toggleRemoveButton = () => {
         setToggled(!toggled);
         console.log('clicked toggle button!');
@@ -28,6 +30,7 @@ const PizzaCard = ({pizza}) => {
 
     const removePizza = () => {
         console.log('clicked removePizza!');
+        dispatch({ type: 'REMOVE_PIZZA', payload: pizza })
     }
 
     return (  

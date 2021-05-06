@@ -3,6 +3,7 @@ import PizzaCard from './PizzaCard';
 
 const Home = () => {
 
+    const pizzaOrder = useSelector(store => store.pizzaOrder);
     const pizzaList = useSelector(store => store.pizzaList);
     console.log(pizzaList);
 
@@ -18,6 +19,7 @@ const Home = () => {
                     return <PizzaCard key={pizza.id} pizza={pizza} />
                 })}
             </div>
+            {JSON.stringify(pizzaOrder)}
             <div>
                 <button onClick={next}>Next</button>
             </div>
