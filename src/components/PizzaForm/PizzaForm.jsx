@@ -1,4 +1,3 @@
-import axios from 'axios';
 import {useState} from 'react';
 import {useDispatch} from 'react-redux';
 
@@ -23,14 +22,7 @@ function PizzaForm(){
             zip: zip,
             type: type,
         })
-        dispatchEvent({type: 'ADD_NEW_ORDER', payload: orderToAdd})
-        setCustomerName('');
-        setCity('');
-        setType('');
-        setStreetAddress('');
-        setZip('');
-
-        
+        dispatchEvent({type: 'ADD_NEW_ORDER', payload: orderToAdd})    
     }
 
     return (
@@ -49,5 +41,3 @@ function PizzaForm(){
 }
 
 export default PizzaForm;
-
-
