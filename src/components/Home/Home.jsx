@@ -1,5 +1,6 @@
 import { useSelector } from 'react-redux';
 import PizzaCard from './PizzaCard';
+import { useHistory } from 'react-router-dom';
 
 const Home = () => {
 
@@ -7,8 +8,11 @@ const Home = () => {
     const pizzaList = useSelector(store => store.pizzaList);
     console.log(pizzaList);
 
+    const history = useHistory();
+
     const next = () => {
         console.log('clicked next');
+        history.push('/customer');
     }
 
     return (
