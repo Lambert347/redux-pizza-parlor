@@ -3,6 +3,8 @@ import AppBar from '@material-ui/core/AppBar';
 import Toolbar from '@material-ui/core/Toolbar';
 import { makeStyles } from '@material-ui/core/styles';
 import Typography from '@material-ui/core/Typography';
+import {useState, useEffect} from 'react';
+
 
 const useStyles = makeStyles((theme) => ({
     root: {
@@ -15,10 +17,7 @@ const useStyles = makeStyles((theme) => ({
 
 
 function Header() {
-
     const classes = useStyles();
-    const total = useSelector(store => store.orderReducer);
-  
     //***This reducer name was changed and is now two so
     //we need to figure out how to get the total value here
     //However, we do not necessarily need conditional rendering here

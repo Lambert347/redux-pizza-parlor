@@ -31,6 +31,11 @@ const orderReducer = (state = initState, action) => {
                 ...state,
                 pizzaOrder: state.pizzaOrder.filter((pizza) => pizza.id !== id)
             }
+        case 'ADD_NEW_ORDER':
+            return {
+                ...state,
+                customerInfo: action.payload
+            }
     }
 
     return state;

@@ -4,8 +4,10 @@ import axios from 'axios';
 import {useHistory} from 'react-router-dom';
 
 function Checkout(){
-    const pizzaOrder = useSelector(store => store.pizzaOrder);
-    const customerInfo = useSelector(store => store.customerInfo)
+    const pizzaOrder = useSelector(store => store.orderReducer.pizzaOrder);
+    const customerInfo = useSelector(store => store.orderReducer.customerInfo);
+    console.log(pizzaOrder);
+    console.log(customerInfo);
     const dispatch = useDispatch();
     const history = useHistory();
     const onSubmit = () => {
@@ -20,8 +22,8 @@ function Checkout(){
                     city: customerInfo.city,
                     zip: customerInfo.zip,
                     type: customerInfo.type,
-                    total: customerInfo.total,
-                    pizzas: pizzaOrder.pizzas
+                    total: 200,
+                    pizzas: pizzaOrder
                 }
             }).then( response => {
                 console.log(response);    
@@ -51,15 +53,11 @@ function Checkout(){
                         <th>Name</th>
                         <th>Cost</th>
                     </tr>
-                    {pizzaOrder.map((pizza, i) => {
-                    <>
-                    <tr key={i}>
-                        <td>{pizza.pizza}</td>
-                    </tr>
-                    <tr key={i}>
-                        <td>{pizza.cost}</td>
-                    </tr>
-                    </>
+                    {pizzaOrder.map((pizza) => {
+                      return  <tr key={pizza.id}>
+                            <td>{pizza.name}</td>
+                            <td>{pizza.price}</td>
+                        </tr>
                     })}
                 </tbody>
             </table>
