@@ -47,7 +47,7 @@ function App() {
         <Route exact path="/" component={Home} />
         <Route exact path="/customer" component={PizzaForm} />
         <Route exact path="/checkout" component={Checkout} />
-        <Route exact path="/administration" administration={Administration} />
+        <Route exact path="/admin" administration={Administration} />
       </Router>
     </div>
   );
