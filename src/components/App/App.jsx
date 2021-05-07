@@ -7,6 +7,7 @@ import Home from '../Home/Home';
 import { useDispatch } from 'react-redux';
 import Checkout from '../Checkout/Checkout';
 import Header from '../Header/Header';
+import Administration from '../Administration/Administration';
 
 
 function App() {
@@ -33,12 +34,9 @@ function App() {
       <Header />
       <Router>
         <Route exact path="/" component={Home} />
-      </Router>
-      <Router>
         <Route exact path="/customer" component={PizzaForm} />
-      </Router>
-      <Router>
         <Route exact path="/checkout" component={Checkout} />
+        <Route exact path="/administration" administration={Administration} />
       </Router>
     </div>
   );
