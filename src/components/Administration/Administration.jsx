@@ -1,4 +1,3 @@
-import {useSelector} from 'react-redux';
 import { useState, useEffect } from 'react';
 import axios from 'axios';
 
@@ -8,8 +7,7 @@ function Administration(){
         getOrders()
     }, []);
 
-    const orders = useSelector(store => store.orderReducer);
-    //const [orders, setOrders] = useState([]);
+    const [orders, setOrders] = useState([]);
 
     const getOrders = () => {
         axios.get('/api/order')
