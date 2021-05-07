@@ -7,11 +7,20 @@ import Home from '../Home/Home';
 import { useDispatch } from 'react-redux';
 import Checkout from '../Checkout/Checkout';
 import Header from '../Header/Header';
+
 import Administration from '../Administration/Administration';
 
+import { makeStyles } from '@material-ui/core';
+
+
+const useStyles = makeStyles((theme) => ({
+  // Load app bar information from the theme
+  toolbar: theme.mixins.toolbar,
+}));
 
 function App() {
 
+  const classes = useStyles();
   const dispatch = useDispatch();
 
   useEffect(() => {
@@ -31,7 +40,9 @@ function App() {
 
   return (
     <div className='App'>
-      <Header />
+      <div className={classes.toolbar}>
+        <Header />
+      </div>
       <Router>
         <Route exact path="/" component={Home} />
         <Route exact path="/customer" component={PizzaForm} />
