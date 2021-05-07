@@ -23,6 +23,8 @@ function Header() {
     //However, we do not necessarily need conditional rendering here
     //const total = useSelector(store => store.orderReducer);
 
+    const pizzaTotal = useSelector(store => store.orderReducer.total);
+
     return (
         <div className={classes.root}>
             <AppBar className='App-header' style={{ margin: 0 }}>
@@ -33,6 +35,7 @@ function Header() {
                     >
                         Prime Pizza
                     </Typography>
+                    <h5>Total Price: ${pizzaTotal}</h5>
                     {/* Add logic to conditionall display total price */}
                     {/* <h3>Total: {total.total}</h3> */}
                 </Toolbar>

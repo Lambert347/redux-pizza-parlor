@@ -15,7 +15,8 @@ const pizzaList = (state = [], action) => {
 
 const initState = {
     pizzaOrder: [],
-    customerInfo: {}
+    customerInfo: {},
+    total: 0
 }
 
 const orderReducer = (state = initState, action) => {
@@ -23,13 +24,15 @@ const orderReducer = (state = initState, action) => {
         case 'ADD_PIZZA':
             return {
                 ...state,
-                pizzaOrder: [...state.pizzaOrder, action.pizza]
+                pizzaOrder: [...state.pizzaOrder, action.pizza],
+                total: Number(action.pizza.price) + state.total
             }
         case 'REMOVE_PIZZA':
             const id = action.pizza.id
             return {
                 ...state,
-                pizzaOrder: state.pizzaOrder.filter((pizza) => pizza.id !== id)
+                pizzaOrder: state.pizzaOrder.filter((pizza) => pizza.id !== id),
+                total: state.total - Number(action.pizza.price)
             }
         case 'ADD_NEW_ORDER':
             return {
