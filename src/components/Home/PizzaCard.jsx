@@ -1,7 +1,11 @@
 import { useDispatch } from 'react-redux';
 import { useState } from 'react';
+import Card from '@material-ui/core/Card';
+import CardContent from '@material-ui/core/CardContent';
+import Typography from '@material-ui/core/Typography';
+import Button from '@material-ui/core/Button';
 
-const PizzaCard = ({pizza}) => {
+const PizzaCard = ({ pizza }) => {
 
     const [toggled, setToggled] = useState(true);
 
@@ -11,10 +15,10 @@ const PizzaCard = ({pizza}) => {
         setToggled(!toggled);
         console.log('clicked toggle button!');
 
-        if(toggled) {
+        if (toggled) {
             addPizza();
-        } 
-        if(!toggled) {
+        }
+        if (!toggled) {
             removePizza();
         }
     }
@@ -28,21 +32,24 @@ const PizzaCard = ({pizza}) => {
 
     const removePizza = () => {
         console.log('clicked removePizza!');
-        dispatch({ type: 'REMOVE_PIZZA', payload: pizza})
+        dispatch({ type: 'REMOVE_PIZZA', payload: pizza })
     }
 
-    return (  
-        <>
+    return (
         <div className="cardContent">
-            <img src={pizza.path} alt={pizza.name}/>
-            <h3>{pizza.name}</h3>
-            <p>{pizza.description} {pizza.price}</p>
-            {toggled && <button onClick={toggleRemoveButton}>ADD</button>}
-            {!toggled && <button onClick={toggleRemoveButton}>REMOVE</button>}
+            <Card elevation={3}>
+                <CardContent gutterBottom>
+                    <img src={pizza.path} alt={pizza.name} />
+                </CardContent>
+                <CardContent style={{ backgroundColor: '#e4f2fe' }}>
+                    <Typography variant="textPrimary" gutterBottom>{pizza.name}</Typography>
+                    <Typography variant="textSecondary">{pizza.description} {pizza.price}</Typography>
+                </CardContent>
+                {toggled && <Button onClick={toggleRemoveButton}>ADD</Button>}
+                {!toggled && <Button onClick={toggleRemoveButton}>REMOVE</Button>}
+            </Card>
         </div>
-
-        </>
     );
 }
- 
+
 export default PizzaCard;
