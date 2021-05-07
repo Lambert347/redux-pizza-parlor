@@ -7,7 +7,11 @@ import Home from '../Home/Home';
 import { useDispatch } from 'react-redux';
 import Checkout from '../Checkout/Checkout';
 import Header from '../Header/Header';
+
+import Administration from '../Administration/Administration';
+
 import { makeStyles } from '@material-ui/core';
+
 
 const useStyles = makeStyles((theme) => ({
   // Load app bar information from the theme
@@ -41,12 +45,9 @@ function App() {
       </div>
       <Router>
         <Route exact path="/" component={Home} />
-      </Router>
-      <Router>
         <Route exact path="/customer" component={PizzaForm} />
-      </Router>
-      <Router>
         <Route exact path="/checkout" component={Checkout} />
+        <Route exact path="/administration" administration={Administration} />
       </Router>
     </div>
   );

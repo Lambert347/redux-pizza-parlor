@@ -18,7 +18,7 @@ const useStyles = makeStyles(theme => ({
 const Home = () => {
 
     const classes = useStyles();
-    const pizzaOrder = useSelector(store => store.pizzaOrder);
+    const pizzaOrder = useSelector(store => store.orderReducer);
     const pizzaList = useSelector(store => store.pizzaList);
     console.log(pizzaList);
 
