@@ -11,33 +11,30 @@ function PizzaForm(){
     
     const dispatchEvent = useDispatch();
 
-    let [orderToAdd, setOrderToAdd] = useState({customer_name: '', street_address: '', city: '', zip: '', type: '',})
+    
 
     const history = useHistory();
 
     const addOrder = (event) => {
         event.preventDefault();
-        setOrderToAdd({
-            ...orderToAdd,
-            customer_name: customer_name,
-            street_address: street_address,
-            city: city,
-            zip: zip,
-            type: type,
-        })
-        dispatchEvent({type: 'ADD_NEW_ORDER', payload: orderToAdd})
+        console.log(customer_name, street_address, city, zip, type);
+        
+        
+        dispatchEvent({type: 'ADD_NEW_ORDER', payload: {customer_name: customer_name,
+             street_address: street_address, city: city, zip: zip,
+             type: type}})
         history.push('/checkout');    
     }
-
+    
     return (
         <section>
             <h3>Enter Order Information</h3>
             <form onSubmit={addOrder}>
-                <input placeholder="Customer Name" value={customer_name} onChange={(event) => setCustomerName(event.target.value)} />
-                <input placeholder="Delivery Address" value={street_address} onChange={(event) => setStreetAddress(event.target.value)} />
-                <input placeholder="City" value={city} onChange={(event) => setCity(event.target.value)} />
-                <input placeholder="Zip Code" value={zip} onChange={(event) => setZip(event.target.value)} />
-                <input placeholder="Order Type (Delivery or Pickup)" value={type} onChange={(event) => setType(event.target.value)} />
+                <input onChange={(event) => setCustomerName(event.target.value)} type="text" placeholder="Customer Name" value={customer_name}  />
+                <input onChange={(event) => setStreetAddress(event.target.value)} type="text" placeholder="Delivery Address" value={street_address}  />
+                <input onChange={(event) => setCity(event.target.value)} type="text" placeholder="City" value={city}  />
+                <input onChange={(event) => setZip(event.target.value)} type="text" placeholder="Zip Code" value={zip}  />
+                <input onChange={(event) => setType(event.target.value)} type="text" placeholder="Order Type (Delivery or Pickup)" value={type}  />
                 <button>Submit Info</button>
             </form>
         </section>

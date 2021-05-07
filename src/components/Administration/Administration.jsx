@@ -1,4 +1,4 @@
-//import {useSelector} from 'react-redux';
+import {useSelector} from 'react-redux';
 import { useState, useEffect } from 'react';
 import axios from 'axios';
 
@@ -8,8 +8,8 @@ function Administration(){
         getOrders()
     }, []);
 
-    //const orderList = useSelector(store => store.orderReducer); *** If decide to use reducer, they changed this reducer name ***
-    const [orders, setOrders] = useState([]);
+    const orders = useSelector(store => store.orderReducer);
+    //const [orders, setOrders] = useState([]);
 
     const getOrders = () => {
         axios.get('/api/order')
