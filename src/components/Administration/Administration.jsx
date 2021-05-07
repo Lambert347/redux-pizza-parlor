@@ -1,9 +1,26 @@
-import {useSelector} from 'react-redux';
+//import {useSelector} from 'react-redux';
+import { useState, useEffect } from 'react';
+import axios from 'axios';
 
 function Administration(){
 
-    const orderList = useSelector(store => store.orderReducer);
-    
+    useEffect(() => {
+        getOrders()
+    }, []);
+
+    //const orderList = useSelector(store => store.orderReducer); *** If decide to use reducer, they changed this reducer name ***
+    const [orders, setOrders] = useState([]);
+
+    const getOrders = () => {
+        axios.get('/api/order')
+        .then((response) => {
+            setOrders(response.data);
+        })
+        .catch((error) => {
+            console.log('error in Admin get', error);
+        });
+    }
+
     return(
         <>
             <header className="admin-header">
@@ -19,7 +36,7 @@ function Administration(){
                     </tr>
                 </thead>
                 <tbody>
-                    {orderList.map((item, i) =>
+                    {orders.map((item, i) =>
                         <tr key={i}>
                             <td>{item.customer_name}</td>
                             <td>{item.time}</td>
@@ -50,6 +67,19 @@ export default Administration;
         <td>{item.total}</td>
     )}
 </tr> */}
+
+// {orders.map( item => {
+//     return (
+//     <>
+//     <tr key={item.id}>
+//         <td>{item.customer_name}</td>
+//         <td>{item.time}</td>
+//         <td>{order.type}</td>
+//         <td>{order.total}</td> 
+//     </tr>
+//     </>
+//     )
+// })}
 
 
     
