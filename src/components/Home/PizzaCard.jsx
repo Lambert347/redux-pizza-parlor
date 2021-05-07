@@ -27,14 +27,14 @@ const PizzaCard = ({ pizza }) => {
         console.log('clicked addPizza!');
         // !!! TO-DO  !!
         // dispatch pizza to the store, hold pizzas added in an array.
-        dispatch({ type: 'ADD_PIZZA', payload: pizza })
+        dispatch({ type: 'ADD_PIZZA', pizza: pizza })
     }
 
     const removePizza = () => {
         console.log('clicked removePizza!');
-        dispatch({ type: 'REMOVE_PIZZA', payload: pizza })
+        dispatch({ type: 'REMOVE_PIZZA', pizza: pizza })
     }
-
+    
     return (
         <div className="cardContent">
             <Card elevation={3}>

@@ -6,37 +6,40 @@ import { createStore, combineReducers, applyMiddleware } from 'redux';
 import { Provider } from 'react-redux';
 import logger from 'redux-logger';
 
-const pizzaList = (state=[], action) => {
+const pizzaList = (state = [], action) => {
     if (action.type === 'GET_PIZZA') {
         return action.payload;
     }
     return state;
 }
 
-const customerInfo = (state={}, action) => {    
-    if (action.type === 'ADD_NEW_ORDER') {
-        return {
-            [action.payload.property]: action.payload.value
-        }
-    }
-    return state;
+const initState = {
+    pizzaOrder: [],
+    customerInfo: {}
 }
 
-const pizzaOrder = (state=[], action) => {
-    if (action.type === 'ADD_PIZZA') {
-        return [...state, action.payload]
+const orderReducer = (state = initState, action) => {
+    switch (action.type) {
+        case 'ADD_PIZZA':
+            return {
+                ...state,
+                pizzaOrder: [...state.pizzaOrder, action.pizza]
+            }
+        case 'REMOVE_PIZZA':
+            const id = action.pizza.id
+            return {
+                ...state,
+                pizzaOrder: state.pizzaOrder.filter((pizza) => pizza.id !== id)
+            }
     }
-    if (action.type === 'REMOVE_PIZZA') {
-        return state.filter(pizza => action.payload != pizza);
-    }
+
     return state;
 }
 
 const storeInstance = createStore(
     combineReducers({
         pizzaList,
-        customerInfo,
-        pizzaOrder
+        orderReducer
     }),
     applyMiddleware(logger)
 )
