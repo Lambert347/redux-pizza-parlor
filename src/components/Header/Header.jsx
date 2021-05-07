@@ -2,7 +2,10 @@ import {useSelector} from 'react-redux';
 
 function Header(){
 
-    const total = useSelector(store => store.orderReducer);
+    //***This reducer name was changed and is now two so
+    //we need to figure out how to get the total value here
+    //However, we do not necessarily need conditional rendering here
+    //const total = useSelector(store => store.orderReducer);
 
     return(
         <header className='App-header'>
