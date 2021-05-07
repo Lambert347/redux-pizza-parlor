@@ -19,6 +19,7 @@ const initState = {
     total: 0
 }
 
+// one reducer to hold them all :)
 const orderReducer = (state = initState, action) => {
     switch (action.type) {
         case 'ADD_PIZZA':
